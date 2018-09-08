@@ -23,7 +23,7 @@ public class QuickSort extends Sorter{
         Utils.swap(array, p1, right);
         
         return p1;
-    }	
+    }
 
 
 	private void quickSort(int[] array, int left, int right) {

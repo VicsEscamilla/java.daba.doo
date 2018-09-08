@@ -36,7 +36,7 @@ public class SortsTests{
 
     public static void test(String name, Sorter s) {
         System.out.println(name);
-        int[] arr = Utils.createIntArray(100, -1000, 1000, Utils.SORTED|Utils.DESC|Utils.USE_SEED, 1234);
+        int[] arr = Utils.createIntArray(128, -1000, 1000, Utils.SORTED|Utils.DESC|Utils.USE_SEED, 1234);
         Utils.printArray(arr);
 
         s.sort(arr);
@@ -73,12 +73,18 @@ public class SortsTests{
     }
 
 
+    public static void testMergeSort() {
+        test("MergeSort!!", new MergeSort());
+    }
+
+
     public static void main(String[] args) {
         testSelection();
         testInsertion();
         testBubble();
         testShell();
         testQuickSort();
+        testMergeSort();
     }
 
 }
