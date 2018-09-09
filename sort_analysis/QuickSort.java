@@ -17,9 +17,13 @@ public class QuickSort extends Sorter{
                 comparison_count++;
             }
 
-            if(p1<p2)
+            if(p1<p2) {
                 Utils.swap(array, p1, p2);
+                move_count++;
+            }
         }
+
+        move_count++;
         Utils.swap(array, p1, right);
         
         return p1;
@@ -38,5 +42,24 @@ public class QuickSort extends Sorter{
         initCounters();
 		quickSort(array, 0, array.length - 1);
 	}
+
+    // For a posteriori analysis
+    public static void main(String[] args) {
+        QuickSort quick = new QuickSort();
+
+        for (int n=1; n<=200; n++) {
+
+            long sum_comparisons=0;
+
+            for (int i=0; i<50; i++) {
+
+                quick.sort(Utils.createIntArray(n, -1000000, 1000000));
+
+                sum_comparisons += comparison_count;
+            }
+
+            System.out.println(sum_comparisons/100);
+        }
+    }
 
 }

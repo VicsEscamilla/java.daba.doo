@@ -18,4 +18,23 @@ public class Shell extends Sorter {
             }
         }
     }
+
+    // For a posteriori analysis
+    public static void main(String[] args) {
+        Shell shell = new Shell();
+
+        for (int n=1000; n<=60000; n+=1000) {
+
+            long sum_comparisons=0;
+
+            for (int i=0; i<100; i++) {
+
+                shell.sort(Utils.createIntArray(n, -1000000, 1000000));
+
+                sum_comparisons += comparison_count;
+            }
+
+            System.out.println(sum_comparisons/100);
+        }
+    }
 }

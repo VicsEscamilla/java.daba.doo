@@ -11,17 +11,22 @@ public class MergeSort extends Sorter{
             comparison_count++;
 
             if (index_a == a.length) {
-                while(index_b < b.length)
+                while(index_b < b.length) {
+                    move_count++;
                     result[index_r++] = b[index_b++];
+                }
                 break;
             }
 
             if (index_b == b.length) {
-                while(index_a < a.length)
+                while(index_a < a.length) {
+                    move_count++;
                     result[index_r++] = a[index_a++];
+                }
                 break;
             }
 
+            move_count++;
             if (a[index_a] < b[index_b])
                 result[index_r++] = a[index_a++];
             else
@@ -47,5 +52,25 @@ public class MergeSort extends Sorter{
     public void sort(int[] array) {
         initCounters();
         mergesort(array);
+    }
+
+
+    // For a posteriori analysis
+    public static void main(String[] args) {
+        MergeSort merge = new MergeSort();
+
+        for (int n=1; n<=200; n++) {
+
+            long sum_comparisons=0;
+
+            for (int i=0; i<50; i++) {
+
+                merge.sort(Utils.createIntArray(n, -1000000, 1000000));
+
+                sum_comparisons += comparison_count;
+            }
+
+            System.out.println(sum_comparisons/100);
+        }
     }
 }
